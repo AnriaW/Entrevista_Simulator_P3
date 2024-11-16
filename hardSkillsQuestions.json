@@ -1,0 +1,52 @@
+[
+  {
+    "question": "A equipe precisa implementar um sistema de filas para processamento assíncrono de tarefas, como envio de emails e notificações. Qual tecnologia seria a mais adequada para garantir escalabilidade e performance?",
+    "options": [
+      "Banco de dados relacional (MySQL)",
+      "Memcached",
+      "Redis",
+      "MongoDB"
+    ],
+    "correctAnswer": "Redis"
+  },
+  {
+    "question": "Você precisa escolher um framework web para desenvolver uma API RESTful que deve ser performática e fácil de manter. O projeto utilizará Python como linguagem principal. Qual framework seria a melhor escolha?",
+    "options": [
+      "Django REST Framework",
+      "Flask",
+      "Pyramid",
+      "Web2py"
+    ],
+    "correctAnswer": "Django REST Framework"
+  },
+  {
+    "question": "O banco de dados da aplicação está sofrendo com lentidão em consultas complexas. Qual estratégia seria mais eficaz para otimizar o desempenho dessas consultas?",
+    "options": [
+      "Adicionar mais memória RAM ao servidor",
+      "Implementar índices nas colunas relevantes",
+      "Migrar para um banco de dados NoSQL",
+      "Utilizar um ORM (Object-Relational Mapper)"
+    ],
+    "correctAnswer": "Implementar índices nas colunas relevantes"
+  },
+  {
+    "question": "A equipe precisa implementar um sistema de autenticação e autorização para a API. Qual protocolo é o mais indicado para garantir segurança e flexibilidade?",
+    "options": [
+      "Basic Authentication",
+      "OAuth 2.0",
+      "Session Cookies",
+      "Digest Authentication"
+    ],
+    "correctAnswer": "OAuth 2.0"
+  },
+  {
+    "question": "O código da aplicação está se tornando complexo e difícil de manter. Qual prática de desenvolvimento seria mais eficaz para melhorar a organização e legibilidade do código?",
+    "options": [
+      "Utilizar comentários em todas as linhas de código",
+      "Escrever métodos com mais de 200 linhas para evitar a criação de muitas classes",
+      "Implementar testes unitários e de integração",
+      "Utilizar nomes de variáveis curtos e genéricos"
+    ],
+    "correctAnswer": "Implementar testes unitários e de integração"
+  }
+]
