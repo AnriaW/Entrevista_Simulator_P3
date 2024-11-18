@@ -1,0 +1,52 @@
+[
+  {
+    "question": "A equipe precisa implementar um sistema de filas para processamento assíncrono de tarefas, como envio de emails e notificações. Qual tecnologia seria a mais adequada para garantir escalabilidade e confiabilidade?",
+    "options": [
+      "Banco de dados relacional com polling",
+      "Cron jobs",
+      "Redis",
+      "Memcached"
+    ],
+    "correctAnswer": "Redis"
+  },
+  {
+    "question": "Você precisa desenvolver uma API RESTful que exija alta performance e suporte a um grande volume de requisições concorrentes.  Qual framework web seria a escolha mais adequada para atender a esses requisitos?",
+    "options": [
+      "Ruby on Rails",
+      "Django",
+      "Spring Boot",
+      "Node.js com Express"
+    ],
+    "correctAnswer": "Node.js com Express"
+  },
+  {
+    "question": "O projeto requer um banco de dados NoSQL para armazenar dados não estruturados, como informações de sensores e logs de eventos. Qual das opções abaixo seria a mais indicada?",
+    "options": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "MariaDB"
+    ],
+    "correctAnswer": "MongoDB"
+  },
+  {
+    "question": "Para garantir a segurança da API, é necessário implementar um sistema de autenticação e autorização. Qual das seguintes abordagens é a mais robusta e recomendada para proteger endpoints sensíveis?",
+    "options": [
+      "Autenticação básica HTTP",
+      "OAuth 2.0",
+      "Sessões baseadas em cookies",
+      "Armazenamento de senhas em texto plano"
+    ],
+    "correctAnswer": "OAuth 2.0"
+  },
+  {
+    "question": "A equipe precisa monitorar o desempenho da aplicação em produção e identificar gargalos. Qual ferramenta seria mais útil para coletar métricas e logs em tempo real?",
+    "options": [
+      "Print statements no código",
+      "Logs em arquivos de texto",
+      "Prometheus",
+      "Depuração remota com IDE"
+    ],
+    "correctAnswer": "Prometheus"
+  }
+]

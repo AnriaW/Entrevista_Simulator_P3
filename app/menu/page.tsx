@@ -16,14 +16,14 @@ export default function Page() {
 
                     {/* Bloco 1 */}
                     <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                        <a className="w-full h-[300px] bg-green-300 border-transparent rounded-[25px]" href="/menu/game/1_areaSelection"></a>
-                        <div className="text-white text-[26px] mt-[10px] ml-[10px]">Simulador de perguntas de entrevista</div>
+                        <a className="w-full h-[300px] bg-green-300 border-transparent rounded-[25px]" href="/menu/game/5_softSkills"></a>
+                        <div className="text-white text-[26px] mt-[10px] ml-[10px]">Simulador de perguntas de entrevista (SoftSkills) </div>
                     </div>
 
                     {/* Bloco 2 */}
                     <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                        <a className="w-full h-[300px] bg-green-300 border-transparent rounded-[25px]" href="/menu/game/1_areaSelection"></a>
-                        <div className="text-white text-[26px] mt-[10px] ml-[10px]">Simulador de entrevista técnica</div>
+                        <a className="w-full h-[300px] bg-green-300 border-transparent rounded-[25px]" href="/menu/game/4_gameHard"></a>
+                        <div className="text-white text-[26px] mt-[10px] ml-[10px]">Simulador de entrevista técnica (HardSkills) </div>
                     </div>
 
 

@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Você precisa implementar um sistema de filas para processar tarefas assíncronas em um aplicativo web com alta demanda. Qual tecnologia seria a mais adequada para garantir escalabilidade e performance?",
+    "options": [
+      "Banco de dados relacional (MySQL)",
+      "Memcached (cache em memória)",
+      "RabbitMQ (message broker)",
+      "Apache Kafka (distributed streaming platform)"
+    ],
+    "correctAnswer": "RabbitMQ (message broker)"
+  },
+  {
+    "question": "A equipe precisa escolher um banco de dados para armazenar dados de usuários, incluindo informações pessoais, histórico de compras e preferências. O sistema precisa ser robusto, confiável e suportar consultas complexas. Qual a melhor opção?",
+    "options": [
+      "MongoDB (NoSQL document database)",
+      "Redis (in-memory data structure store)",
+      "PostgreSQL (relational database)",
+      "Cassandra (wide-column store)"
+    ],
+    "correctAnswer": "PostgreSQL (relational database)"
+  },
+  {
+    "question": "Seu aplicativo precisa se comunicar com diversos outros serviços, alguns com APIs RESTful e outros com protocolos diferentes. Qual padrão de arquitetura seria mais adequado para gerenciar essa complexidade e desacoplar os serviços?",
+    "options": [
+      "Microservices",
+      "Monolithic Architecture",
+      "Serverless",
+      "MVC (Model-View-Controller)"
+    ],
+    "correctAnswer": "Microservices"
+  },
+  {
+    "question": "Para garantir a segurança de uma API RESTful, qual método de autenticação é considerado mais robusto e seguro para proteger informações sensíveis dos usuários?",
+    "options": [
+      "Autenticação básica com HTTP Basic Auth",
+      "Tokens JWT (JSON Web Tokens)",
+      "Cookies de sessão",
+      "OAuth 2.0"
+    ],
+    "correctAnswer": "Tokens JWT (JSON Web Tokens)"
+  },
+  {
+    "question": "O time precisa implementar um sistema de logging para monitorar o desempenho e identificar erros no backend. Qual ferramenta seria a mais indicada para centralizar os logs, facilitar a busca e análise, e integrar com outros sistemas de monitoramento?",
+    "options": [
+      "Escrever logs diretamente em arquivos de texto",
+      "Utilizar a função print() para exibir logs no console",
+      "Implementar um sistema customizado de logging",
+      "ELK Stack (Elasticsearch, Logstash, Kibana)"
+    ],
+    "correctAnswer": "ELK Stack (Elasticsearch, Logstash, Kibana)"
+  }
+]
