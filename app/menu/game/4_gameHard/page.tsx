@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { generateQuestions } from "./prompt"; // Importando a função do arquivo prompt.ts
 
 export default function GenerateQuestionsPage() {
   const [questions, setQuestions] = useState<any[]>([]);
@@ -9,6 +10,8 @@ export default function GenerateQuestionsPage() {
   const [error, setError] = useState("");
   const [answers, setAnswers] = useState<number[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0); // Controle do slide
+  const [score, setScore] = useState(0); // Nota final
 
   const fetchQuestions = async () => {
     setLoading(true);
@@ -16,15 +19,12 @@ export default function GenerateQuestionsPage() {
     setQuestions([]);
     setAnswers([]);
     setSubmitted(false);
+    setScore(0);
 
     try {
-      const response = await fetch("/hardSkillsQuestions.json");
-      if (!response.ok) {
-        throw new Error("Erro ao buscar perguntas");
-      }
-      const data = await response.json();
+      const data = await generateQuestions();
       setQuestions(data);
-      setAnswers(new Array(data.length).fill(-1));
+      setAnswers(new Array(data.length).fill(-1)); // Inicializa as respostas
     } catch (err: any) {
       setError(err.message || "Erro desconhecido");
     } finally {
@@ -32,14 +32,34 @@ export default function GenerateQuestionsPage() {
     }
   };
 
-  const handleAnswerChange = (questionIdx: number, optionIdx: number) => {
+  const handleAnswerChange = (optionIdx: number) => {
     const updatedAnswers = [...answers];
-    updatedAnswers[questionIdx] = optionIdx;
+    updatedAnswers[currentQuestion] = optionIdx;
     setAnswers(updatedAnswers);
   };
 
   const handleSubmit = () => {
+    // Calcula a nota total
+    let totalScore = 0;
+    answers.forEach((answer, idx) => {
+      if (questions[idx].options[answer] === questions[idx].correctAnswer) {
+        totalScore += 20; // Cada resposta correta vale 20 pontos
+      }
+    });
+    setScore(totalScore);
     setSubmitted(true);
+  };
+
+  const nextQuestion = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const prevQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
   };
 
   return (
@@ -67,72 +87,66 @@ export default function GenerateQuestionsPage() {
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
-        {questions.length > 0 && (
-          <form onSubmit={(e) => e.preventDefault()} className="mt-6">
-            <div className="space-y-6">
-              {questions.map((q, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 border border-gray-700 rounded-lg shadow-sm"
-                >
-                  <p className="font-bold mb-2">{`Pergunta ${idx + 1}: ${q.question}`}</p>
-                  <ul>
-                    {q.options.map((option: string, optIdx: number) => (
-                      <li key={optIdx} className="mb-2">
-                        <label className="flex items-center gap-2">
-                          <input
-                            type="radio"
-                            name={`question-${idx}`}
-                            value={optIdx}
-                            checked={answers[idx] === optIdx}
-                            onChange={() => handleAnswerChange(idx, optIdx)}
-                            disabled={submitted}
-                          />
-                          {option}
-                        </label>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+        {questions.length > 0 && !submitted && (
+          <div className="mt-6">
+            <div className="p-4 border border-gray-700 rounded-lg shadow-sm">
+              <p className="font-bold mb-2">
+                Pergunta {currentQuestion + 1}/{questions.length}:{" "}
+                {questions[currentQuestion].question}
+              </p>
+              <ul>
+                {questions[currentQuestion].options.map(
+                  (option: string, optIdx: number) => (
+                    <li key={optIdx} className="mb-2">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name={`question-${currentQuestion}`}
+                          value={optIdx}
+                          checked={answers[currentQuestion] === optIdx}
+                          onChange={() => handleAnswerChange(optIdx)}
+                        />
+                        {option}
+                      </label>
+                    </li>
+                  )
+                )}
+              </ul>
             </div>
-            {!submitted && (
-              <div className="text-center mt-6">
+
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={prevQuestion}
+                disabled={currentQuestion === 0}
+                className="px-4 py-2 bg-gray-600 text-white rounded"
+              >
+                Anterior
+              </button>
+              {currentQuestion < questions.length - 1 ? (
+                <button
+                  onClick={nextQuestion}
+                  className="px-4 py-2 bg-blue-500 text-white rounded"
+                >
+                  Próximo
+                </button>
+              ) : (
                 <button
                   onClick={handleSubmit}
                   className="px-4 py-2 bg-green-500 text-white rounded"
                 >
-                  Enviar Respostas
+                  Finalizar
                 </button>
-              </div>
-            )}
-          </form>
+              )}
+            </div>
+          </div>
         )}
 
         {submitted && (
-          <div className="mt-6">
+          <div className="mt-6 text-center">
             <h2 className="text-xl font-bold mb-4">Resultados</h2>
-            <ul className="space-y-4">
-              {questions.map((q, idx) => (
-                <li
-                  key={idx}
-                  className="p-4 border border-gray-700 rounded-lg shadow-sm"
-                >
-                  <p>
-                    <strong>Pergunta {idx + 1}:</strong> {q.question}
-                  </p>
-                  <p>
-                    <strong>Sua Resposta:</strong>{" "}
-                    {answers[idx] !== -1
-                      ? q.options[answers[idx]]
-                      : "Não respondida"}
-                  </p>
-                  <p>
-                    <strong>Resposta Correta:</strong> {q.correctAnswer}
-                  </p>
-                </li>
-              ))}
-            </ul>
+            <p className="text-lg mb-4">
+              Sua pontuação final é: <strong>{score}/100</strong>
+            </p>
           </div>
         )}
       </div>
