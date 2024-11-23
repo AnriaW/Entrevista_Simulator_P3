@@ -1,8 +1,24 @@
 'use client'
+
+import React, { useState } from 'react';
+import {fetchData, postData} from './api';
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Entrar() {
+
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+  
+	const handleLogin = async (e) => {
+	  e.preventDefault();
+	  try {
+		const userData = await fetchData('/user');
+	} catch (error) {
+		console.error('Erro ao fazer login:', error);
+	  }
+	};
+
 	return (
 		<form className="flex h-full w-full flex-col items-center justify-center gap-8 bg-background md:h-fit md:w-fit md:flex-row md:justify-between md:rounded-2xl md:p-14">
 			<div className="flex flex-col items-center gap-8 px-10">
