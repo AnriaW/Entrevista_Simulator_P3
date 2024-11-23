@@ -1,5 +1,5 @@
 #Entrevista Simulator
 
-## Seu melhor métodos para treinar suas dificuldades em entrevistas
+## Seu melhor método para treinar suas dificuldades em entrevistas
 
 
