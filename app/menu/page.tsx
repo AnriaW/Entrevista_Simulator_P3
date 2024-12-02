@@ -18,9 +18,9 @@ export default function Page() {
 
                         {/* Bloco 1 */}
                         <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                            <a className="w-full h-[300px] bg-[#80AB4F] border-transparent rounded-[25px] flex items-center justify-center" href="/menu/game/5_softSkills">
+                            <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px] flex items-center justify-center" href="/menu/game/5_softSkills">
                                 <img
-                                    src="/hmm.png"
+                                    src="/1436714.png"
                                     alt="SoftSkills Simulador"
                                     className="w-[40%] h-[80%] object-contain rounded-[20px]"
                                 />
@@ -30,7 +30,7 @@ export default function Page() {
 
                         {/* Bloco 2 */}
                         <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                            <a className="w-full h-[300px] bg-[#80AB4F] border-transparent rounded-[25px] flex items-center justify-center" href="/menu/game/4_gameHard">
+                            <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px] flex items-center justify-center" href="/menu/game/4_gameHard">
                                 <img
                                     src="/5849fc74-a233-4d14-860f-23ff8c8859de.png"
                                     alt="HardSkills Simulador"
@@ -50,7 +50,7 @@ export default function Page() {
                     <div className="w-[80%] h-full flex flex-row justify-center mt-5">
                         {/* Bloco 1 */}
                         <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                            <a className="w-full h-[300px] bg-[#80AB4F] border-transparent rounded-[25px]" href="/">
+                            <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px]" href="/">
                                 {/* Você pode adicionar uma imagem aqui, se necessário */}
                             </a>
                             <div className="text-white text-[22px] mt-[10px] ml-[10px]">Quais as roupas adequadas para utilizar numa entrevista de emprego?</div>
@@ -58,7 +58,7 @@ export default function Page() {
 
                         {/* Bloco 2 */}
                         <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                            <a className="w-full h-[300px] bg-[#80AB4F] border-transparent rounded-[25px]" href="/">
+                            <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px]" href="/">
                                 {/* Você pode adicionar uma imagem aqui, se necessário */}
                             </a>
                             <div className="text-white text-[22px] mt-[10px] ml-[10px]">Como se preparar para uma entrevista?</div>
