@@ -45,27 +45,29 @@ export default function Page() {
 
                 {/* linha inferior */}
                 <div className="w-full h-[90%] flex flex-col items-center justify-center mt-2 mb-[60px] pt-[15px]">
-                    <div className="text-white text-[35px] self-start pl-[17%]">Dicas de carreira</div>
+     <div className="text-white text-[35px] self-start pl-[17%]">Dicas de carreira</div>
 
-                    <div className="w-[80%] h-full flex flex-row justify-center mt-5">
-                        {/* Bloco 1 */}
-                        <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                            <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px]" href="/">
-                                {/* Você pode adicionar uma imagem aqui, se necessário */}
-                            </a>
-                            <div className="text-white text-[22px] mt-[10px] ml-[10px]">Quais as roupas adequadas para utilizar numa entrevista de emprego?</div>
-                        </div>
+  <div className="w-[80%] h-full flex flex-row justify-center mt-5">
+    {/* Bloco 1 */}
+    <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
+      <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px] flex items-center justify-center" href="/">
+        
+        <img src="\roupa-para-entrevista-de-emprego-capa-1200x800-1.jpg" alt="roupas para entrevista" className="w-full h-full object-cover rounded-[25px]" />
+      </a>
+      <div className="text-white text-[22px] mt-[10px] ml-[10px]">Quais as roupas adequadas para utilizar numa entrevista de emprego?</div>
+    </div>
 
-                        {/* Bloco 2 */}
-                        <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
-                            <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px]" href="/">
-                                {/* Você pode adicionar uma imagem aqui, se necessário */}
-                            </a>
-                            <div className="text-white text-[22px] mt-[10px] ml-[10px]">Como se preparar para uma entrevista?</div>
-                        </div>
+    {/* Bloco 2 */}
+    <div className="w-[40%] h-full flex flex-col items-start justify-center mr-[25px]">
+      <a className="w-full h-[300px] bg-[#6AB981] border-transparent rounded-[25px] flex items-center justify-center" href="/">
+         
+        <img src="/soft.jpg" alt="dicas para se preparar" className="w-full h-full object-cover rounded-[25px]" />
+      </a>
+      <div className="text-white text-[22px] mt-[10px] ml-[10px]">Como se preparar para uma entrevista?</div>
+    </div>
+  </div>
+</div>
 
-                    </div>
-                </div>
 
             </div> 
 
