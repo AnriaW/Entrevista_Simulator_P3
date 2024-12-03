@@ -1,153 +1,112 @@
 "use client";
 
-import { ArrowLeftCircle } from 'lucide-react'
-import { useEffect, useState } from "react";
-import Link from "next/link";
- 
-export default function SoftSkillsPage() {
-  const [questions, setQuestions] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [submittedAnswers, setSubmittedAnswers] = useState<string[]>([]);
- 
-  const fetchQuestions = async () => {
-    setLoading(true);
-    setError("");
-    setQuestions([]);
-    setFeedback("");
-    setCurrentQuestionIndex(0);
-    setSubmittedAnswers([]);
- 
-    try {
-      const response = await fetch("/softSkillsQuestions.json");
-      if (!response.ok) {
-        throw new Error("Erro ao buscar perguntas");
+import { useState, useEffect } from "react";
+
+export default function GenerateQuestionsPage() {
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [selectedQuestions, setSelectedQuestions] = useState<string[]>([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [answers, setAnswers] = useState<string[]>([]);
+  const [answer, setAnswer] = useState<string>("");  
+  const [loading, setLoading] = useState<boolean>(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  // Carregar perguntas ao montar o componente
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/prompt"); // Para GET
+        const data = await response.json();
+        setQuestions(data.questions);
+      } catch (error) {
+        console.error("Erro ao carregar perguntas:", error);
+      } finally {
+        setLoading(false);
       }
-      const data = await response.json();
-      setQuestions(data);
-    } catch (err: any) {
-      setError(err.message || "Erro desconhecido");
-    } finally {
-      setLoading(false);
+    };
+
+    fetchQuestions();
+  }, []);
+
+  // Sortear 5 perguntas aleatórias
+  useEffect(() => {
+    if (questions.length > 0) {
+      const shuffled = [...questions].sort(() => Math.random() - 0.5); // Embaralhar perguntas
+      setSelectedQuestions(shuffled.slice(0, 5)); // Selecionar 5 perguntas
+    }
+  }, [questions]);
+
+  const handleAnswerSubmit = () => {
+    if (!answer) return;
+
+    const updatedAnswers = [...answers, answer];
+    setAnswers(updatedAnswers);
+    setAnswer("");
+
+    if (updatedAnswers.length < 5) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      // Enviar as respostas para gerar feedback
+      generateFeedback(updatedAnswers);
     }
   };
- 
-  const submitAnswer = async () => {
-    if (!userAnswer.trim()) {
-      alert("Por favor, escreva uma resposta.");
-      return;
-    }
- 
+
+  const generateFeedback = async (answers: string[]) => {
+    setLoading(true);
     try {
-      const response = await fetch("/menu/game/5_softSkills/ai-feedback", {
+const response = await fetch("/api/prompt", { // Para POST
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          question: questions[currentQuestionIndex].question,
-          answer: userAnswer,
-        }),
+        body: JSON.stringify({ answers, questions: selectedQuestions }),
       });
- 
-      if (!response.ok) {
-        throw new Error("Erro ao gerar feedback.");
-      }
- 
       const data = await response.json();
       setFeedback(data.feedback);
- 
-      setSubmittedAnswers((prev) => [...prev, userAnswer]);
-      setUserAnswer("");
- 
-      if (currentQuestionIndex + 1 < questions.length) {
-        setCurrentQuestionIndex((prev) => prev + 1);
-      }
-    } catch (err: any) {
-      setError(err.message || "Erro desconhecido");
+    } catch (error) {
+      console.error("Erro ao gerar feedback:", error);
+    } finally {
+      setLoading(false);
     }
   };
- 
-  useEffect(() => {
-    fetchQuestions();
-  }, []);
- 
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white overflow-auto">
-        <div className="w-full max-w-3xl p-6 bg-gray-800 rounded-lg shadow-md mt-8">
-          <h1 className="text-2xl font-bold mb-6 text-center">
-            Teste de Soft Skills
-          </h1>
+    <div className="container mx-auto p-4 text-center"> {/* Centralizar todo o conteúdo */}
+      <h1 className="text-2xl font-bold mb-4">Jogo de Soft Skills</h1>
   
-          {loading ? (
-            <p className="text-center">Carregando...</p>
-          ) : error ? (
-            <p className="text-red-500 text-center">{error}</p>
-          ) : questions.length > 0 && currentQuestionIndex < questions.length ? (
-            <div>
-              <div className="mb-6 p-4 border border-gray-700 rounded-lg">
-                <p className="text-xl font-semibold mb-4">{`Pergunta ${
-                  currentQuestionIndex + 1
-                }: ${questions[currentQuestionIndex].question}`}</p>
+      {loading && <p>Carregando...</p>}
   
-                <textarea
-                  value={userAnswer}
-                  onChange={(e) => setUserAnswer(e.target.value)}
-                  className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded mb-4"
-                  rows={4}
-                  placeholder="Escreva sua resposta aqui..."
-                ></textarea>
-              </div>
-  
-              <div className="text-center">
-                <button
-                  onClick={submitAnswer}
-                  className="px-4 py-2 bg-green-500 text-white rounded"
-                >
-                  Enviar Resposta
-                </button>
-              </div>
-  
-              {feedback && (
-                <div className="mt-6 p-4 bg-gray-700 text-white border border-gray-600 rounded-lg">
-                  <strong>Feedback:</strong>
-                  <p>{feedback}</p>
-                </div>
-              )}
-            </div>
-          ) : currentQuestionIndex >= questions.length ? (
-            <div className="mt-6">
-              <h2 className="text-xl font-bold mb-4">Resultado Final</h2>
-              <ul className="space-y-4">
-                {submittedAnswers.map((answer, idx) => (
-                  <li
-                    key={idx}
-                    className="p-4 border border-gray-700 rounded-lg shadow-sm"
-                  >
-                    <p>
-                      <strong>Pergunta {idx + 1}:</strong>{" "}
-                      {questions[idx].question}
-                    </p>
-                    <p>
-                      <strong>Sua Resposta:</strong> {answer}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
+      {!loading && feedback && (
+        <div>
+          <h2 className="text-xl font-bold">Feedback:</h2>
+          <p>{feedback}</p>
         </div>
-
-      
-      <Link className="absolute top-5 left-5" href="/menu">
-      <ArrowLeftCircle size={32} />
-      </Link>  
-      
+      )}
+  
+      {!loading && !feedback && currentQuestionIndex < 5 && (
+        <div>
+          <p className="text-lg mb-4">{selectedQuestions[currentQuestionIndex]}</p> {/* Adicionada margem inferior */}
+          <input
+            type="text"
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            style={{ color: "white", backgroundColor: "#1f2937" }} // Branco para texto e cinza escuro para fundo
+            className="mt-2 p-4 border w-full max-w-lg h-16 text-lg rounded-md" // Alterado tamanho e estilo
+            placeholder="Sua resposta..."
+          />
+  
+          <button
+            onClick={handleAnswerSubmit}
+            className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg"
+          >
+            {currentQuestionIndex < 4 ? "Próxima Pergunta" : "Gerar Feedback"}
+          </button>
+        </div>
+      )}
+  
+      {currentQuestionIndex >= 5 && <p>fim</p>}
     </div>
-
   );
+  
 }
-   
