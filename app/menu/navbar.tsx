@@ -17,7 +17,7 @@ interface NavItem {
   };
 
   const navItems: NavItem[] = [
-    { id: 1, text: 'Inicio', href: '' },
+    { id: 1, text: 'Inicio', href: '/' },
     { id: 2, text: 'Comunidade', href: '' },
     { id: 3, text: 'Recursos', href: '' },
     { id: 4, text: 'Buscar', href: '' },

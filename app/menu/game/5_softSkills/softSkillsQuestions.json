@@ -1,17 +1,17 @@
 [
-  {
-    "question": "Você está liderando um projeto com prazo apertado e um membro da equipe, com histórico de atrasos, não entregou sua parte. Como você abordaria essa situação, considerando o impacto no projeto e a necessidade de manter um bom relacionamento com a equipe?"
-  },
-  {
-    "question": "Durante uma reunião de brainstorming, um colega apresenta uma ideia que você considera inviável. Como você expressaria sua opinião de forma construtiva, sem desmotivar o colega e incentivando a discussão de outras alternativas?"
-  },
-  {
-    "question": "Você e um colega de trabalho têm visões conflitantes sobre a melhor estratégia para um projeto importante.  Como você lidaria com esse conflito, buscando uma solução que atenda aos objetivos do projeto e preserve o relacionamento profissional?"
-  },
-  {
-    "question": "Você recebe um feedback negativo de seu supervisor sobre sua comunicação interpessoal. Ele sugere que você precisa ser mais claro e objetivo em suas mensagens. Como você reagiria a esse feedback e o que faria para melhorar suas habilidades de comunicação?"
-  },
-  {
-    "question": "Sua equipe está passando por uma reestruturação significativa, causando incerteza e ansiedade entre os membros. Como você, como membro da equipe, ajudaria a manter o moral e a produtividade em alta durante esse período de transição?"
-  }
-]
+    {
+      "question": "Você está liderando um projeto com prazo apertado e um membro da equipe, com histórico de atrasos, não entregou sua parte. Como você abordaria essa situação, considerando o impacto no projeto e a necessidade de manter um bom relacionamento com a equipe?"
+    },
+    {
+      "question": "Durante uma reunião de brainstorming, um colega apresenta uma ideia que você considera inviável. Como você expressaria sua opinião de forma construtiva, sem desmotivar o colega e incentivando a discussão de outras alternativas?"
+    },
+    {
+      "question": "Você e um colega de trabalho têm visões conflitantes sobre a melhor estratégia para um projeto importante.  Como você lidaria com esse conflito, buscando uma solução que atenda aos objetivos do projeto e preserve o relacionamento profissional?"
+    },
+    {
+      "question": "Você recebe um feedback negativo de seu supervisor sobre sua comunicação interpessoal. Ele sugere que você precisa ser mais claro e objetivo em suas mensagens. Como você reagiria a esse feedback e o que faria para melhorar suas habilidades de comunicação?"
+    },
+    {
+      "question": "Sua equipe está passando por uma reestruturação significativa, causando incerteza e ansiedade entre os membros. Como você, como membro da equipe, ajudaria a manter o moral e a produtividade em alta durante esse período de transição?"
+    }
+  ]
