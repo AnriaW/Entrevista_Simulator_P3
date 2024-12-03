@@ -1,30 +1,14 @@
-import Link from 'next/link'
-import {
-	SiLinkedin,
-	SiX,
-	SiInstagram,
-	SiYoutube,
-} from '@icons-pack/react-simple-icons'
 
-//TODO: add real urls
 
 export function Footer() {
 	return (
-		<footer className="w-full border-white/65 border-t px-4 py-8">
-			<nav className="mx-auto flex w-full max-w-screen-xl gap-4">
-				<Link href="#">
-					<SiX />
-				</Link>
-				<Link href="#">
-					<SiInstagram />
-				</Link>
-				<Link href="#">
-					<SiYoutube />
-				</Link>
-				<Link href="#">
-					<SiLinkedin />
-				</Link>
-			</nav>
+		<footer className="w-full p-4 bg-gray-800 text-white text-center">
+			<div>Entrevista Simulator © 2024</div>
+			<div className="mt-2 text-sm">
+				<a href="#" className="mx-2">Termos de serviço</a>
+				<a href="#" className="mx-2">Política de Privacidade</a>
+			</div>
 		</footer>
+
 	)
 }

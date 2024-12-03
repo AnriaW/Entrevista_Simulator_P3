@@ -9,7 +9,7 @@ interface NavItem {
   text: string;
 }
 
- export default function Navbar () {
+ export default function Navbar() {
 
   const [nav, setNav] = useState<boolean>(false);
   const handleNav = () => {
@@ -21,11 +21,11 @@ interface NavItem {
     { id: 2, text: 'Comunidade', href: '' },
     { id: 3, text: 'Recursos', href: '' },
     { id: 4, text: 'Buscar', href: '' },
-    { id: 5, text: 'Perfil', href: '/menu/perfil' }, // Link para a página de perfil
+    { id: 5, text: 'Configurações', href: '/menu/perfil' }, // Link para a página de perfil
   ];
 
-  return (
-    <div className='bg-[#1B3E1B] flex justify-between items-center h-24  mx-auto px-4 text-white'>
+  return ( 
+  <div className="w-full p-2 bg-gray-800 shadow flex justify-between items-center gap-5">
       {/* Logo */}
 	 <ul>
 	  <Link href="/">
