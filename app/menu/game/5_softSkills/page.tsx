@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowLeftCircle } from 'lucide-react'
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function GenerateQuestionsPage() {
@@ -72,7 +74,7 @@ const response = await fetch("/api/prompt", { // Para POST
   };
 
   return (
-    <div className="container mx-auto p-4 text-center"> {/* Centralizar todo o conteúdo */}
+    <div className=" p-4 text-center"> {/* Centralizar todo o conteúdo */}
       <h1 className="text-2xl font-bold mb-4">Jogo de Soft Skills</h1>
   
       {loading && <p>Carregando...</p>}
@@ -85,20 +87,20 @@ const response = await fetch("/api/prompt", { // Para POST
       )}
   
       {!loading && !feedback && currentQuestionIndex < 5 && (
-        <div>
-          <p className="text-lg mb-4">{selectedQuestions[currentQuestionIndex]}</p> {/* Adicionada margem inferior */}
+        <div className=" grid h-screen flex items-center justify-center space-y-4">
+          <p className="text-lg text-center max-w-[400px]">{selectedQuestions[currentQuestionIndex]}</p> {/* Adicionada margem inferior */}
           <input
             type="text"
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             style={{ color: "white", backgroundColor: "#1f2937" }} // Branco para texto e cinza escuro para fundo
-            className="mt-2 p-4 border w-full max-w-lg h-16 text-lg rounded-md" // Alterado tamanho e estilo
+            className=" p-4 border w-full max-w-[400px] h-16  rounded-md" // Alterado tamanho e estilo
             placeholder="Sua resposta..."
           />
   
           <button
             onClick={handleAnswerSubmit}
-            className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg"
+            className=" py-3 mt-8 bg-[#7858C3] text-white rounded-lg"
           >
             {currentQuestionIndex < 4 ? "Próxima Pergunta" : "Gerar Feedback"}
           </button>
@@ -106,6 +108,10 @@ const response = await fetch("/api/prompt", { // Para POST
       )}
   
       {currentQuestionIndex >= 5 && <p>fim</p>}
+
+      <Link className="absolute top-5 left-5" href="/menu">
+          <ArrowLeftCircle size={32} />
+        </Link>
     </div>
   );
   

@@ -2,7 +2,7 @@
 import React from "react";
 import Navbar  from './navbar'
 import Footer  from './footer'
-import TrainingProgress from './grafico'
+import ProgressChart from './grafico'
 import Link from "next/link";
 
 export default function Page() {
@@ -50,8 +50,9 @@ export default function Page() {
          <div className="px-4 sm:px-10 py-10 flex-items-center mb-8">
                 <h2 className="text-white text-2xl font-bold mb-2 text-center">Cursos recomendados para você</h2> 
                 <h2 className="text-white text-1xl mb-6 text-center">baseados no seu desempenho nos simuladores</h2>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <div className="p-4 bg-gradient-to-l from-green-800 to-green-400 rounded-lg text-center text-white max-w-[400px]">
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-center flex-items-center">
+
+                    <div className="p-4 bg-gradient-to-l from-green-800 to-green-400 rounded-lg text-center text-white">
                         <div className="text-6xl">⏳</div>
                         <h3 className="text-xl font-medium mt-2">Gerenciamento de tempo</h3>
                             
@@ -59,6 +60,8 @@ export default function Page() {
                         <span className="px-2 py-1 bg-[#7858C3] rounded text-sm">Iniciar</span>
                     </div>
                     </div>
+
+
                     <div className="p-4 bg-gradient-to-l from-green-800 to-green-400 rounded-lg text-center text-white">
                         <div className="text-6xl">📚</div>
                         <h3 className="text-xl font-medium mt-2">Data Science Fundamentals</h3>
@@ -79,7 +82,7 @@ export default function Page() {
 
 
         
-        <TrainingProgress />
+        <ProgressChart />
 
         <Footer />
      </>  
